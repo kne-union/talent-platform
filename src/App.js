@@ -1,29 +1,20 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
 import pages from './pages';
 import MainLayout from './MainLayout';
-import { globalPreset } from './preset';
 import './index.scss';
 
 const { Home, Position, Error, NotFound } = pages;
-
-const App = () => {
-  return (
-    <Routes>
+const App = ({ globalPreset }) => {
+  return (<Routes>
       <Route
         path="/"
-        element={
-          <MainLayout
-            preset={globalPreset}
-            themeToken={globalPreset.themeToken}
-            paths={[
-              {
-                title: '职位',
-                key: 'position',
-                path: '/position'
-              }
-            ]}
-          />
-        }
+        element={<MainLayout
+          preset={globalPreset}
+          themeToken={globalPreset.themeToken}
+          paths={[{
+            title: '职位', key: 'position', path: '/position'
+          }]}
+        />}
       >
         <Route index element={<Home />} />
         <Route path="position" element={<Position />} />
@@ -31,8 +22,7 @@ const App = () => {
         <Route path="404" element={<NotFound />} />
         <Route path="*" element={<Navigate to="404" />} />
       </Route>
-    </Routes>
-  );
+    </Routes>);
 };
 
 export default App;
