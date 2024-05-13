@@ -22,3 +22,7 @@ export const list = {
     };
   }
 };
+
+export const detail = {
+  url: 'mock/position-detail.json'
+};
